@@ -1,61 +1,35 @@
 <template>
   <v-app>
-    <v-app-bar app color="secondary" dark>
-      <div class="tab-wrapper">
-        <v-btn text link to="/contacts" height="60px">
-          <div class="icon-top">
-            <svg class="svg-icon" viewBox="0 0 25 25" width="20" height="20">
-              <path fill="white" :d=icons.contacts />
-            </svg>
-            <p class="btn-text">Contacts</p>
-          </div>
-        </v-btn>
-        <v-btn text link to="/messages" height="60px">
-          <div class="icon-top">
-            <svg class="svg-icon" viewBox="0 0 25 25" width="20" height="20">
-              <path fill="white" :d=icons.messages />
-            </svg>
-            <p class="btn-text">Messages</p>
-          </div>
-        </v-btn>
-        <v-btn text link to="/calls" height="60px">
-          <div class="icon-top">
-            <svg class="svg-icon" viewBox="0 0 25 25" width="20" height="20">
-              <path fill="white" :d=icons.calls />
-            </svg>
-            <p class="btn-text">Calls</p>
-          </div>
-        </v-btn>
-      </div>  <!-- /tab-wrapper -->
-    </v-app-bar>
+    <app-tab-header></app-tab-header>
     <v-main>
       <router-view></router-view>
     </v-main>
+    <app-status-bar></app-status-bar>
   </v-app>
 </template>
 
 <script>
 
-import {mdiContacts, mdiMessage, mdiPhone} from './mdi';
+import AppTabHeader from './components/app-tab-header'
+import AppStatusBar from './components/app-status-bar'
 
 export default {
   name: 'App',
 
   components: {
+    AppTabHeader,
+    AppStatusBar
   },
 
   data: () => ({
-    icons : {
-      contacts: mdiContacts,
-      messages: mdiMessage,
-      calls: mdiPhone
-
-    }
   }),
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.tab-bar-btn {
+  padding:5px;
+}
 .icon-top {
   display: flex;
   flex-direction: column;
@@ -70,4 +44,15 @@ export default {
   flex-direction: row;
   justify-content: stretch;
 }
+.v-main__wrap::-webkit-scrollbar{
+  width: 0px;
+  display: none;
+  overflow-y: hidden;
+}
+::-webkit-scrollbar{
+  width: 0px;
+  display: none;
+  overflow-y: hidden;
+}
+
 </style>
