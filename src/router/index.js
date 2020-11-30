@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Contacts from '../views/Contacts'
 import Messages from '../views/Messages'
 import Calls from '../views/Calls'
+import UserDetails from '../views/UserDetails'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ const routes = [
     path: '/calls',
     name: 'Calls',
     component: Calls
+  },
+  {
+    path: '/contact/:id',
+    component: UserDetails
   }
 ]
 

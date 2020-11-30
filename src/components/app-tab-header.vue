@@ -14,7 +14,7 @@
           <svg class="svg-icon" viewBox="0 0 25 25" width="20" height="20">
             <path fill="white" :d="icons.messages" />
           </svg>
-          <span class="btn-text">Messages</span>
+          <span class="btn-text">Chats</span>
         </div>
       </v-btn>
       <v-btn class="tab-bar-btn" text link to="/calls" height="150%">
