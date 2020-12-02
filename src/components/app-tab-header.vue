@@ -9,7 +9,7 @@
           <span class="btn-text">Contacts</span>
         </div>
       </v-btn>
-      <v-btn class="tab-bar-btn" text link to="/messages" height="150%">
+      <v-btn class="tab-bar-btn" text link to="/chats" height="150%">
         <div class="icon-top">
           <svg class="svg-icon" viewBox="0 0 25 25" width="20" height="20">
             <path fill="white" :d="icons.messages" />

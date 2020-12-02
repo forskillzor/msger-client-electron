@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Contacts from '../views/Contacts'
-import Messages from '../views/Messages'
+import ChatList from '../views/ChatList'
 import Calls from '../views/Calls'
 import UserDetails from '../views/UserDetails'
+import Chat from '../views/Chat'
 
 Vue.use(VueRouter)
 
@@ -18,19 +19,24 @@ const routes = [
     component: Contacts
   },
   {
-    path: '/messages',
-    name: 'Messages',
-    component: Messages
+    path: '/contacts/:id',
+    component: UserDetails
+  },
+  {
+    path: '/chats',
+    name: 'Chats',
+    component: ChatList
+  },
+  {
+    path: '/chats/:id',
+    name: 'Chats',
+    component: Chat
   },
   {
     path: '/calls',
     name: 'Calls',
     component: Calls
   },
-  {
-    path: '/contact/:id',
-    component: UserDetails
-  }
 ]
 
 const router = new VueRouter({

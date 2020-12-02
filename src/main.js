@@ -6,11 +6,15 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
+import ChatServices from './services/chat-service'
+
 Vue.config.productionTip = false
 
-new Vue({
+const _vue = new Vue({
   router,
   store,
   vuetify,
   render: h => h(App)
 }).$mount('#app')
+
+ChatServices.registerStore(_vue.$store);

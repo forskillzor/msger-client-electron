@@ -15,12 +15,10 @@ import AppStatusBar from './components/app-status-bar'
 
 export default {
   name: 'App',
-
   components: {
     AppTabHeader,
     AppStatusBar
   },
-
   data: () => ({
   }),
 };
