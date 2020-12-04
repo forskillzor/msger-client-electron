@@ -4,6 +4,7 @@ const socket = new WebSocket('ws://localhost:3000');
 
 const service = {
   socket: socket,
+  state: "closed",
   registerStore (store) { this.store = store },
   send (mess) { this.socket.send(mess) },
   receive (str) {
@@ -13,6 +14,7 @@ const service = {
 };
 
 socket.onopen = () => {
+  socket.state = 'open';
   const msg = {
     command: "register",
     user: service.store.getters['getUserId'],
@@ -27,6 +29,13 @@ socket.onopen = () => {
 
 socket.onmessage = mess => {
   service.receive(mess)
+}
+socket.onerror = () => {
+  socket.state = 'error'
+}
+
+socket.onclose = () => {
+  socket.state = 'close';
 }
 
 export default service;

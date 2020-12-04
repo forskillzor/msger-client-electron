@@ -2,14 +2,14 @@
   <div class="messages">
     <v-list>
       <div v-for="(chat, index) in chats" :key="index" >
-        <v-list-item link :to="'/chats/' + chat.user">
-            <v-avatar class="mr-6">
-              <v-img :src="user(chat.user).photo?
-               user(chat.user).photo : avatar">
+        <v-list-item link :to="'/chats/' + chat.from">
+          <v-avatar class="mr-6">
+              <v-img :src="user(chat.from).photo?
+               user(chat.from).photo : avatar">
               </v-img>
             </v-avatar>
           <v-list-item-subtitle>
-            {{ user(chat.user).name }}
+            {{ user(chat.from).name }}
           </v-list-item-subtitle>
           <v-list-item-subtitle>
             <v-chip>

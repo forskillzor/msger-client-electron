@@ -25,6 +25,7 @@
 
           </div>
       </v-card-text>
+      <v-divider></v-divider>
       <v-card-actions>
         <v-row>
           <v-col cols="9">
@@ -62,9 +63,11 @@ export default {
   }),
   methods: {
     send() {
-      document.getElementById('chat-area').scrollTop= 999999999;
+      document.getElementById('chat-area').scrollBy(0, 999999999);
       const msg = {
-        user: 'badik',
+        from: 'badik',
+        user: 'skillzor',
+        command: 'message',
         payload: {
           message: this.message,
           side: 'outcome',
@@ -94,8 +97,8 @@ export default {
     overflow: scroll;
     margin: 5px;
     padding: 5px 10px;
-    height: 290px;
-    border: 1px solid #8d8d8d;
-    border-radius: 5px;
+    height: 380px;
+    //border: 1px solid #8d8d8d;
+    //border-radius: 5px;
   }
 </style>

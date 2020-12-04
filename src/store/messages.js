@@ -4,7 +4,7 @@ export default {
   state: () => ({
     chats : [
       {
-        user: '1',
+        from: '1',
         messages : [
           {
             date: new Date().toLocaleTimeString(),
@@ -39,7 +39,7 @@ export default {
         ],
       },
       {
-        user: '2',
+        from: '2',
         messages : [
           {
             date: new Date().toLocaleTimeString(),
@@ -61,34 +61,35 @@ export default {
     ],
   }),
   getters: {
-    getMessages: state => user => state.chats.find(item => item.user == user),
+    getMessages: state => user => state.chats.find(item => item.from == user),
     getChats: state => state.chats,
   },
   mutations: {
     addMessage(state, payload) {
-      const chat = state.chats.find(item => item.user == payload.user);
+      const chat = state.chats.find(item => item.from == payload.from);
       chat.messages.push(payload.payload);
     },
     createChat(state, payload) {
-      state.chats.push({user: payload.user, messages: []});
+      state.chats.push({from: payload.from, messages: []});
     },
   },
   actions: {
     send({dispatch}, payload) {
       dispatch('receiveMessage', payload);
+      const from = payload.from;
+      const user = payload.user;
+      payload.from = user;
+      payload.user = from;
       const str = JSON.stringify(payload);
       ChatService.send(str);
     },
     receiveMessage(context, payload) {
-      if (context.rootGetters['messages/getMessages'](payload.user)) {
+      console.log(payload)
+      if (context.rootGetters['messages/getMessages'](payload.from)) {
         context.commit('addMessage', payload);
-        console.log('server exists messages');
       } else {
         context.commit('createChat', payload);
         context.commit('addMessage', payload);
-        // console.log('payload: ', payload);
-        // console.log('commited message: ', payload.payload);
-        // console.log('no server in messages');
       }
     }
   },

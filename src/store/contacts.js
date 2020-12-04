@@ -3,14 +3,6 @@ export default {
   state: () => ({
     contacts: [
       {
-        name: "Sergey O",
-        email: "skillzor@gmail.com",
-        position: "friend",
-        status: "online",
-        id: 'skillzor',
-        photo: ""
-      },
-      {
         name: "Badik E",
         email: "skillzor@gmail.com",
         position: "friend",
